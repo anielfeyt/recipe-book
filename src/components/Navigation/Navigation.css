@@ -1,0 +1,8 @@
+.Nav-container {
+    height: 80px;
+    width: 100%;
+    box-sizing: content-box;
+    box-shadow: lightgrey 0 2px 8px;
+    display: inline-flex;
+    align-items: center;
+}

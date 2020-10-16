@@ -1,0 +1,63 @@
+.recipe-grid {
+    /*Add grid settings here*/
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.recipe-card {
+    max-width: 400px;
+    min-height: 410px;
+    border: 1px solid lightgrey;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    position: relative;
+}
+
+.recipe-head {
+    width: 100%;
+
+}
+
+.recipe-ingredients {
+border: 3px dotted  rgba(231, 74, 74, 1);
+padding: 5px 0;
+}
+
+.card-btn-bottom-left {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.card-controls {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    height: fit-content;
+}
+
+.delete {
+    cursor: pointer;
+    background-color:red;
+    padding: 8px;
+    color: #fff;
+    display: inline-block;
+}
+
+.delete img, .edit img {
+    height: 20px;
+    width: 20px;
+}
+
+.edit {
+    right: 16px;
+    cursor: pointer;
+    background-color: rgb(58, 145, 0);
+    padding: 8px;
+    color: #fff;
+    display: inline-block;
+}
+
