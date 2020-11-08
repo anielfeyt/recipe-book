@@ -36,9 +36,15 @@ const Recipe = (props) => {
     }
 
     const deleteRecipeHandler = (rId) => {
-        deleteRecipe(rId);
+        const msg = deleteRecipe(rId);
 
-        toast.error('Recipe Deleted!');
+        if (msg !== undefined) {
+            toast.error('Recipe Deleted!');
+        } else {
+            toast.error('Denied! Please change your credentials.');
+        }
+
+
     }
 
     return (
@@ -69,7 +75,7 @@ const Recipe = (props) => {
             </div>
             <ToastContainer
                 position="top-center"
-                autoClose={3000}
+                autoClose={4000}
                 hideProgressBar
                 newestOnTop={false}
                 closeOnClick

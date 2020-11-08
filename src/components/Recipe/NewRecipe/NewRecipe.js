@@ -17,9 +17,15 @@ const NewRecipe = () => {
     // Post the recipe to the database
     const postRecipeHandler = (e) => {
         e.preventDefault();
-        recipesContext.postRecipe(title, ingredients, instructions);
+        const msg = recipesContext.postRecipe(title, ingredients, instructions);
         resetFields();
-        toast.success('Recipe Added!');
+
+        if (msg !== undefined) {
+            toast.success('Recipe Added!');
+        } else {
+            toast.error('Denied! Please change your credentials.');
+        }
+
     }
 
     // Add an ingredient to the local state and list
@@ -49,7 +55,7 @@ const NewRecipe = () => {
         <Fragment>
             <ToastContainer
                 position="top-center"
-                autoClose={3000}
+                autoClose={4000}
                 hideProgressBar
                 newestOnTop={false}
                 closeOnClick

@@ -90,6 +90,7 @@ const RecipesState = props => {
         })
             .catch(error => {
                 console.log("Could not post recipe.");
+                return error;
             });
 
         dispatch({
@@ -112,6 +113,7 @@ const RecipesState = props => {
         })
             .catch(error => {
                 console.log("Could not delete recipe.");
+                return error;
             });
     }
 

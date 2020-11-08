@@ -1,5 +1,7 @@
 import * as firebase from 'firebase';
 
+// Add you own firebase config credentials here
+
 const firebaseConfig = {
     apiKey: "AIzaSyAiWjJZJYDpgtwiX1Vc12dVTeOboaeuzEg",
     authDomain: "tome-recipes.firebaseapp.com",
