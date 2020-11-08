@@ -7,6 +7,7 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import RecipeGrid from './components/Recipe/RecipeGrid';
 import NewRecipe from './components/Recipe/NewRecipe/NewRecipe';
+import EditRecipe from './components/Recipe/EditRecipe/EditRecipe';
 import Recipe from './components/Recipe/Recipe';
 
 
@@ -20,6 +21,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={RecipeGrid} />
               <Route exact path="/add-new" component={NewRecipe} />
+              <Route exact path="/edit/:rId" component={EditRecipe} />
               <Route exact path="/recipe/:rId" component={Recipe} />
             </Switch>
           </div>

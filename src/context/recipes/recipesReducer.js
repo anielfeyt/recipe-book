@@ -2,10 +2,13 @@ import {
     GET_RECIPE,
     GET_RECIPES,
     DELETE_RECIPE,
-    SET_LOADING
+    UPDATE_RECIPE,
+    SET_EDITING,
+    SET_LOADING,
+    POST_RECIPE
 } from '../types'
 
-export default (state, action) => {
+const reduce = (state, action) => {
     switch (action.type) {
         case GET_RECIPES:
             return {
@@ -19,6 +22,15 @@ export default (state, action) => {
                 recipe: action.payload,
                 loading: false
             }
+        case POST_RECIPE:
+            return {
+                ...state
+            }
+        case UPDATE_RECIPE:
+            return {
+                ...state,
+                loading: false
+            }
         case DELETE_RECIPE:
             return {
                 ...state,
@@ -29,7 +41,14 @@ export default (state, action) => {
                 ...state,
                 loading: true
             }
+        case SET_EDITING:
+            return {
+                ...state,
+                editing: true
+            }
         default:
             return state;
     }
 }
+
+export default reduce;

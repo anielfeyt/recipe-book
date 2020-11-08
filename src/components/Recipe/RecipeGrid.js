@@ -10,11 +10,12 @@ const RecipeGrid = () => {
 
     useEffect(() => {
         getRecipes();
+
         //eslint-disable-next-line
     }, []);
 
     if (loading) return <Spinner />;
-
+    if (recipes === undefined) return <h1>Please add some recipes.</h1>
     return (
         <div className="recipe-grid">
             {recipes.map(recipe => (

@@ -8,8 +8,8 @@ const Menu = () => {
 
         <div className="menu-list">
             <ul>
-                <li><Link to="/">Recipes</Link></li>
-                <li><Link to="/add-new">Add New</Link></li>
+                <li><Link className="btn btn-default" to="/">Recipes</Link></li>
+                <li><Link className="btn btn-default" to="/add-new">Add New</Link></li>
             </ul>
         </div>
 

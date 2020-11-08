@@ -1,25 +1,48 @@
-import React, { useState, useContext, Fragment } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import RecipesContext from '../../../context/recipes/recipesContext';
+import firebase from '../../../services/firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import './NewRecipe.css';
+import './EditRecipe.css';
 
-const NewRecipe = () => {
+const EditRecipe = ({ match }) => {
+
+    const recipesContext = useContext(RecipesContext);
 
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [curIngredient, setCurIngredient] = useState('');
     const [instructions, setInstructions] = useState('');
 
-    const recipesContext = useContext(RecipesContext);
+    useEffect(() => {
+        const rId = match.params.rId;
+        const recipesRef = firebase.database().ref(`recipes/${rId}`);
+        recipesRef.once('value', (snapshot) => {
+
+            const recipe = snapshot.val();
+
+            setTitle(recipe.title);
+            setIngredients(recipe.ingredients);
+            setInstructions(recipe.instructions);
+
+        });
+
+
+        //eslint-disable-next-line
+    }, []);
 
     // Post the recipe to the database
-    const postRecipeHandler = (e) => {
+    const updateRecipeHandler = (e) => {
         e.preventDefault();
-        recipesContext.postRecipe(title, ingredients, instructions);
-        resetFields();
-        toast.success('Recipe Added!');
+        let editedRecipe = {
+            title: title,
+            ingredients: ingredients,
+            instructions: instructions
+        }
+        recipesContext.updateRecipe(match.params.rId, editedRecipe);
+
+        toast.success('Recipe Updated!');
     }
 
     // Add an ingredient to the local state and list
@@ -37,14 +60,6 @@ const NewRecipe = () => {
         setIngredients(newArr);
     }
 
-    const resetFields = () => {
-        setTitle('');
-        setIngredients([]);
-        setCurIngredient('');
-        setInstructions('');
-    }
-
-
     return (
         <Fragment>
             <ToastContainer
@@ -59,8 +74,7 @@ const NewRecipe = () => {
                 pauseOnHover
             />
 
-            <form onSubmit={postRecipeHandler} >
-
+            <form onSubmit={updateRecipeHandler} >
                 <div className="new-recipe-container">
                     <label htmlFor="title"><h3>Recipe Name</h3></label><br />
                     <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} />
@@ -89,8 +103,9 @@ const NewRecipe = () => {
                     <button className="btn btn-default">Save</button>
                 </div>
             </form>
+
         </Fragment>
     );
 }
 
-export default NewRecipe;
+export default EditRecipe;

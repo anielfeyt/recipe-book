@@ -9,11 +9,17 @@
 .recipe-card {
     max-width: 400px;
     min-height: 410px;
-    border: 1px solid lightgrey;
+    border: 3px solid var(--main-color);
+    border-radius: 20px;
     padding: 5px 10px;
     box-sizing: border-box;
     margin-top: 10px;
     position: relative;
+    background-color: #fff;
+}
+
+.recipe-card:hover .active-controls {
+    display: block;
 }
 
 .recipe-head {
@@ -22,8 +28,8 @@
 }
 
 .recipe-ingredients {
-border: 3px dotted  rgba(231, 74, 74, 1);
-padding: 5px 0;
+    border: 3px dotted var(--main-color);
+    padding: 5px 0;
 }
 
 .card-btn-bottom-left {
@@ -34,10 +40,12 @@ padding: 5px 0;
 
 .card-controls {
     position: absolute;
-    top: 0px;
+    top: 10px;
     right: 16px;
     height: fit-content;
+    display: none;
 }
+
 
 .delete {
     cursor: pointer;
@@ -45,6 +53,7 @@ padding: 5px 0;
     padding: 8px;
     color: #fff;
     display: inline-block;
+    padding: 8px 8px 4px 8px;
 }
 
 .delete img, .edit img {
@@ -55,9 +64,11 @@ padding: 5px 0;
 .edit {
     right: 16px;
     cursor: pointer;
-    background-color: rgb(58, 145, 0);
+    background-color: var(--main-color);
     padding: 8px;
     color: #fff;
     display: inline-block;
+    padding: 8px 8px 4px 8px;
+    margin-right: 5px;
 }
 

@@ -6,21 +6,33 @@
 .btn {
     background-color: transparent;
     border: 0;
-    color:rgba(231, 74, 74, 1);
-    padding: 8px 8px;
-    font-size: 18px;
     transition: all .1s ease-in;
     text-decoration: none;
+    box-shadow: 0 4px 4px #bfbfbf;
 }
 
 .btn:hover {
-    background-color: rgba(231, 74, 74, 1);
-    color: white;
+    box-shadow: none;
     cursor: pointer;
 }
 
+.btn-default {
+    background-color: var(--main-color);
+    padding: 8px 20px;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 26px;
+    
+    font-weight: 600;
+}
+
+
 .btn-large {
     font-size: 25px;
+}
+
+.btn-round {
+    border-radius: 30px;
 }
 
 .btn-delete {
