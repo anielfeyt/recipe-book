@@ -4,7 +4,7 @@ import firebase from '../../../services/firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import './EditRecipe.css';
+import '../NewRecipe/NewRecipe.css';
 
 const EditRecipe = ({ match }) => {
 
@@ -77,7 +77,7 @@ const EditRecipe = ({ match }) => {
             <form onSubmit={updateRecipeHandler} >
                 <div className="new-recipe-container">
                     <label htmlFor="title"><h3>Recipe Name</h3></label><br />
-                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} />
+                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} required pattern="\w+" />
                     <br />
                     <label htmlFor="ingredients"><h3>Ingredients</h3></label><br />
                     <div className="group-input">
@@ -99,7 +99,7 @@ const EditRecipe = ({ match }) => {
                     </div>
                     <br />
                     <label htmlFor="instructions"><h3>Instructions</h3></label><br />
-                    <textarea name="instructions" rows="8" onChange={e => setInstructions(e.target.value)} value={instructions}></textarea>
+                    <textarea name="instructions" rows="8" onChange={e => setInstructions(e.target.value)} value={instructions} required></textarea>
                     <button className="btn btn-default">Save</button>
                 </div>
             </form>

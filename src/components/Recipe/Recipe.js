@@ -18,7 +18,7 @@ const Recipe = ({ match }) => {
     if (ingredients === undefined) return <Spinner />; // Ensures there are values in the state for ingredients before loading.
 
     return (
-        <div>
+        <div className="recipe-sheet">
             <h1>{title}</h1>
             <div className="recipe-ingredients">
                 <ul>

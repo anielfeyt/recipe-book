@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipeContext from '../../context/recipes/recipesContext';
-import './Recipe.css';
+import './RecipeCard.css';
 import binIcon from '../../assets/bin_icon.svg';
 import editIcon from '../../assets/edit_icon.svg';
 import { ToastContainer, toast } from 'react-toastify';
@@ -43,8 +43,6 @@ const Recipe = (props) => {
         } else {
             toast.error('Denied! Please change your credentials.');
         }
-
-
     }
 
     return (

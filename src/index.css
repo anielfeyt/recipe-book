@@ -10,7 +10,8 @@ body {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--light-color);
+  background: var(--light-color);
+  background: linear-gradient(90deg, rgba(28,140,108,1) 0%, rgba(194,242,224,1) 100%);
 }
 
 code {
