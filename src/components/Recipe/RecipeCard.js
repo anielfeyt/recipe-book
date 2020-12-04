@@ -38,7 +38,7 @@ const Recipe = (props) => {
     const deleteRecipeHandler = (rId) => {
         const msg = deleteRecipe(rId);
 
-        if (msg !== undefined) {
+        if (msg === undefined) {
             toast.error('Recipe Deleted!');
         } else {
             toast.error('Denied! Please change your credentials.');

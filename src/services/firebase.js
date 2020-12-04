@@ -1,9 +1,15 @@
 import * as firebase from 'firebase';
 
-// Add you own firebase config credentials here
+let recipebookApi;
+
+if (process.env.NODE_ENV !== 'production') {
+    recipebookApi = process.env.REACT_APP_RECIPE_BOOK_API;
+} else {
+    recipebookApi = process.env.RECIPE_BOOK_API;
+}
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAiWjJZJYDpgtwiX1Vc12dVTeOboaeuzEg",
+    apiKey: recipebookApi,
     authDomain: "tome-recipes.firebaseapp.com",
     databaseURL: "https://tome-recipes.firebaseio.com",
     projectId: "tome-recipes",

@@ -13,26 +13,35 @@ const NewRecipe = () => {
     const [instructions, setInstructions] = useState('');
 
     const recipesContext = useContext(RecipesContext);
+    const pattern = /\w+/;
+    let match = pattern.test(title);
 
     // Post the recipe to the database
     const postRecipeHandler = (e) => {
         e.preventDefault();
+
         const msg = recipesContext.postRecipe(title, ingredients, instructions);
-        resetFields();
+        console.log(match);
 
-        if (msg !== undefined) {
-            toast.success('Recipe Added!');
-        } else {
+        if (match === false || ingredients.length === 0 || instructions === '') {
+            toast.error('Please enter all fields.');
+        } else if (msg !== undefined) {
             toast.error('Denied! Please change your credentials.');
+        } else {
+            toast.success('Recipe Added!');
+            resetFields();
         }
-
     }
 
     // Add an ingredient to the local state and list
     const ingredientAddHandler = (e) => {
         e.preventDefault();
-        setIngredients(ingredients => [...ingredients, curIngredient]);
-        setCurIngredient('');
+        if (curIngredient === '') {
+            toast.error("Cannot enter an empty ingredient.");
+        } else {
+            setIngredients(ingredients => [...ingredients, curIngredient]);
+            setCurIngredient('');
+        }
     }
 
     // Delete ingredients in the list
@@ -69,7 +78,7 @@ const NewRecipe = () => {
 
                 <div className="new-recipe-container">
                     <label htmlFor="title"><h3>Recipe Name</h3></label><br />
-                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} required pattern="\w+" />
+                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} required />
                     <br />
                     <label htmlFor="ingredients"><h3>Ingredients</h3></label><br />
                     <div className="group-input">

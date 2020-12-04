@@ -32,6 +32,9 @@ const EditRecipe = ({ match }) => {
         //eslint-disable-next-line
     }, []);
 
+    const pattern = /\w+/;
+    let matchTitle = pattern.test(title);
+
     // Post the recipe to the database
     const updateRecipeHandler = (e) => {
         e.preventDefault();
@@ -40,16 +43,25 @@ const EditRecipe = ({ match }) => {
             ingredients: ingredients,
             instructions: instructions
         }
-        recipesContext.updateRecipe(match.params.rId, editedRecipe);
 
-        toast.success('Recipe Updated!');
+        if (matchTitle === false || ingredients.length === 0 || instructions === '') {
+            toast.error('Please enter all fields.');
+        } else {
+            recipesContext.updateRecipe(match.params.rId, editedRecipe);
+            toast.success('Recipe Updated!');
+        }
+
     }
 
     // Add an ingredient to the local state and list
     const ingredientAddHandler = (e) => {
         e.preventDefault();
-        setIngredients(ingredients => [...ingredients, curIngredient]);
-        setCurIngredient('');
+        if (curIngredient === '') {
+            toast.error("Cannot enter an empty ingredient.");
+        } else {
+            setIngredients(ingredients => [...ingredients, curIngredient]);
+            setCurIngredient('');
+        }
     }
 
     // Delete ingredients in the list
@@ -77,7 +89,7 @@ const EditRecipe = ({ match }) => {
             <form onSubmit={updateRecipeHandler} >
                 <div className="new-recipe-container">
                     <label htmlFor="title"><h3>Recipe Name</h3></label><br />
-                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} required pattern="\w+" />
+                    <input type="text" name="title" onChange={e => setTitle(e.target.value)} value={title} required />
                     <br />
                     <label htmlFor="ingredients"><h3>Ingredients</h3></label><br />
                     <div className="group-input">
