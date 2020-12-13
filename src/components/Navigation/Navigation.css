@@ -7,3 +7,27 @@
     align-items: center;
     background-color: #fff;
 }
+
+@media screen and (max-width: 530px) {
+    .Nav-container {
+        display: block;
+        height: auto;
+        text-align: center;
+    }
+
+    .menu-list {
+        margin-right: 0;
+    }
+
+    .logo-container {
+        overflow: auto;
+    }
+
+    .menu-list ul {
+        padding-left: 0;
+    }
+
+    .menu-list ul li {
+        margin: 20px 8px;
+    }
+}
